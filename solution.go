@@ -7,7 +7,7 @@ import (
 )
 
 func GetMessage() string {
-	return emoji.Sprint("Hello :world_map:!")
+	return emoji.Sprint("Hello :world_map:")
 }
 
 func CalcSquare(sideLen float64, sidesNum int32) float64{
