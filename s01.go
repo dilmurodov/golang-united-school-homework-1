@@ -27,9 +27,9 @@ func (u *User) FullName() string {
 	return u.firstName + " " + u.lastName
 }
 
-func ResetUser(user UserInterface) {
-	user.SetFirstName("")
-	user.SetLastName("")
+func ResetUser(user *UserInterface) {
+	(*user).SetFirstName("")
+	(*user).SetLastName("")
 }
 
 func IsUser(input interface{}) bool {
