@@ -11,7 +11,7 @@ type User struct {
 	lastName  string
 }
 
-func New() UserInterface {
+func New() *User {
 	return &User{}
 }
 
