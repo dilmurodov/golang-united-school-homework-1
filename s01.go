@@ -11,8 +11,8 @@ type User struct {
 	lastName  string
 }
 
-func New() *User {
-	return &User{}
+func New() User {
+	return User{}
 }
 
 func (u *User) SetFirstName(firstName string) {
