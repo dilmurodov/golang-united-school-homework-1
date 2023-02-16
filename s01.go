@@ -27,9 +27,9 @@ func (u *User) FullName() string {
 	return u.firstName + " " + u.lastName
 }
 
-func ResetUser(user User) {
-	user.firstName = ""
-	user.lastName = ""
+func ResetUser(user **User) {
+	(*user).firstName = ""
+	(*user).lastName = ""
 }
 
 func IsUser(input interface{}) bool {
