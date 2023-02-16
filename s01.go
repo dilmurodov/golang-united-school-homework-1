@@ -1,5 +1,7 @@
 package structs
 
+import "fmt"
+
 type UserInterface interface {
 	SetFirstName(string)
 	SetLastName(string)
@@ -24,16 +26,18 @@ func (u *User) SetLastName(lastName string) {
 }
 
 func (u *User) FullName() string {
-	return u.firstName + " " + u.lastName
+	return u.lastName + " " + u.firstName
 }
 
-func ResetUser(user **User) {
+func ResetUser(user *User) {
 	(*user).firstName = ""
 	(*user).lastName = ""
 }
 
 func IsUser(input interface{}) bool {
-	return input.(UserInterface) != nil
+	xType := fmt.Sprintf("%T", input)
+	accpectedType := fmt.Sprintf("%T", User{})
+	return xType == accpectedType
 }
 
 func ProcessUser(input UserInterface) string {
