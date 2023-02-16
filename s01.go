@@ -27,7 +27,7 @@ func (u *User) FullName() string {
 	return u.firstName + " " + u.lastName
 }
 
-func ResetUser(user UserInterface) {
+func ResetUser(user *User) {
 	user.SetFirstName("")
 	user.SetLastName("")
 }
