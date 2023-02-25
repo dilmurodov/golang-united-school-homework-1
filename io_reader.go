@@ -1,8 +1,6 @@
 package homework
 
 import (
-	"fmt"
-	"io"
 	"strings"
 )
 
@@ -14,30 +12,31 @@ half of the remaining string, and returns it as a string.
 */
 func SeekTillHalfOfString(strReader *strings.Reader) string {
 
-	var (
-		err error
-	)
+	// var (
+	// 	err error
+	// )
 
-	defer func() {
-		if b := recover(); b != nil {
-			fmt.Println("Panic occured: ", b)
-		}
-	}()
+	// defer func() {
+	// 	if b := recover(); b != nil {
+	// 		fmt.Println("Panic occured: ", b)
+	// 	}
+	// }()
 
-	_, err = strReader.Seek(strReader.Size()/2, 0)
-	if err != nil {
-		panic(err)
-	}
+	// _, err = strReader.Seek(strReader.Size()/2, 0)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	rSize := strReader.Size() - strReader.Size()/2
-	rBuf := make([]byte, rSize)
+	// rSize := strReader.Size() - strReader.Size()/2
+	// rBuf := make([]byte, rSize)
 
-	_, err = strReader.Read(rBuf)
-	if err != nil {
-		panic(err)
-	}
+	// _, err = strReader.Read(rBuf)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	return string(rBuf)
+	// return string(rBuf)
+	return ""
 }
 
 /*
@@ -48,19 +47,20 @@ and splits the contents of the reader into chunks of size n.
 The function returns a slice of strings containing the chunks
 */
 func ReaderSplit(strReader *strings.Reader, n int) []string {
-	var (
-		resp []string
-		rBuf = make([]byte, n)
-	)
+	// var (
+	// 	resp []string
+	// 	rBuf = make([]byte, n)
+	// )
 
-	for {
-		n, err := strReader.Read(rBuf)
-		if err == io.EOF {
-			break
-		}
+	// for {
+	// 	n, err := strReader.Read(rBuf)
+	// 	if err == io.EOF {
+	// 		break
+	// 	}
 
-		resp = append(resp, string(rBuf[:n]))
-	}
+	// 	resp = append(resp, string(rBuf[:n]))
+	// }
 
-	return resp
+	// return resp
+	return nil
 }
