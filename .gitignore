@@ -1,4 +1,4 @@
-/vendor
+# /vendor
 # /go.mod
 /go.sum
 /io_reared_test.go
