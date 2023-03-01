@@ -3,8 +3,6 @@ package hard
 import (
 	"strings"
 	"testing"
-
-	"github.com/abdukhashimov/io_homework/homework"
 )
 
 func TestGoalParsers(t *testing.T) {
@@ -41,7 +39,7 @@ func TestGoalParsers(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := homework.GoalParsers(tt.args.strReader); got != tt.want {
+			if got := GoalParsers(tt.args.strReader); got != tt.want {
 				t.Errorf("GoalParsers() = %v, want %v", got, tt.want)
 			}
 		})

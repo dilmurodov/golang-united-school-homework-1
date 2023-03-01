@@ -1,6 +1,9 @@
 package hard
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 /*
 You own a Goal Parser that can interpret a string command.
@@ -29,54 +32,55 @@ func GoalParsers(strReader *strings.Reader) string {
 	if err != nil {
 		panic(err)
 	}
+
+	fmt.Println(string(readerBuf))
 	parsedString := parse(string(readerBuf))
 	return parsedString
 }
 
+/*
+
+G()
+-> G
+()
+
+
+*/
+
 func parse(word string) string {
-	output := ""
-	start := -1
 
-	for i, char := range word {
-		if char == 'G' {
-			if start != -1 {
-				return ""
-			}
-			output += "G"
-		} else if char == '(' {
-			if start != -1 {
-				return ""
-			}
-			start = i
-		} else if char == ')' {
-			if start == -1 {
-				return ""
-			}
-			token := word[start : i+1]
-			if token == "()" {
-				output += "o"
-			} else if token == "(al)" {
-				output += "al"
-			} else {
-				return ""
-			}
-			start = -1
-		} else if char == 'a' {
-			if start == -1 {
-				return ""
-			}
-		} else if char == 'l' {
-			if start == -1 || len(output) == 0 || output[len(output)-1] != 'a' {
-				return ""
-			}
-		} else {
-			return ""
-		}
-	}
+	var (
+		output string
+	)
 
-	if start != -1 {
+	if word == "" {
 		return ""
 	}
 
-	return output
+	for i := 0; i < len(word); i++ {
+
+		switch b := word[i]; string(b) {
+		case "G":
+			output = "G"
+		case "(":
+			output += "("
+		case ")":
+			output += ")"
+		case "a":
+			output += "a"
+		case "l":
+			output += "l"
+		}
+
+		switch output {
+		case "G":
+			return "G" + parse(word[i+1:])
+		case "()":
+			return "o" + parse(word[i+1:])
+		case "(al)":
+			return "al" + parse(word[i+1:])
+		}
+	}
+
+	return ""
 }
